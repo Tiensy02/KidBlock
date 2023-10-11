@@ -1,18 +1,17 @@
 package com.javaSpring.KidBlock.Domain.Model;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class BlockModel {
-    private UUID blockID;
+    private String blockID;
     private String blockName;
     private String blockCode;
     private LocalDate createDate;
-    private LocalDate blockTimeBlock; // thời gian khoá
+    private LocalDate blockTimeBlock; 
     private String kidDeviceName;
     private String kidDeviceKidAvatar;
-    private LocalDate blockTimeremain; // thời gian còn lại
-    public UUID getBlockID() {
+    private long blockTimeremain; 
+    public String getBlockID() {
         return blockID;
     }
     public String getBlockName() {
@@ -33,7 +32,7 @@ public class BlockModel {
     public String getKidDeviceKidAvatar() {
         return kidDeviceKidAvatar;
     }
-    public void setBlockID(UUID blockID) {
+    public void setBlockID(String blockID) {
         this.blockID = blockID;
     }
     public void setBlockName(String blockName) {
@@ -54,10 +53,10 @@ public class BlockModel {
     public void setKidDeviceKidAvatar(String kidDeviceKidAvatar) {
         this.kidDeviceKidAvatar = kidDeviceKidAvatar;
     }
-    public LocalDate getBlockTimeremain( ) {
+    public long getBlockTimeremain( ) {
         return blockTimeremain;
     }
-    public void setBlockTimeremain(LocalDate date) {
+    public void setBlockTimeremain(long date) {
         this.blockTimeremain = date;
     }
 }

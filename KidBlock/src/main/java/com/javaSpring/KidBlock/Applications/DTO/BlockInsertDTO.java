@@ -1,68 +1,59 @@
 package com.javaSpring.KidBlock.Applications.DTO;
 
 import java.time.LocalDate;
-import java.util.UUID;
-
 
 public class BlockInsertDTO {
-    private UUID KidDeviceID;
+    
+    private String kidDeviceID;
 	
-	private LocalDate  BlockTimeBlock;
+	private LocalDate  blockTimeBlock;
 	
-	private LocalDate BlockTimeEdit;
+	private String parentID;
 	
-	private UUID ParentID;
+	private String blockName;
 	
-	private String BlockName;
-	
-	private String BlockCode;
+	private String blockCode;
 
-    public UUID getKidDeviceID() {
-        return KidDeviceID;
+    public String getKidDeviceID() {
+        return kidDeviceID;
+    }
+
+    public void setKidDeviceID(String kidDeviceID) {
+        this.kidDeviceID = kidDeviceID;
     }
 
     public LocalDate getBlockTimeBlock() {
-        return BlockTimeBlock;
-    }
-
-    public LocalDate getBlockTimeEdit() {
-        return BlockTimeEdit;
-    }
-
-    public UUID getParentID() {
-        return ParentID;
-    }
-
-    public String getBlockName() {
-        return BlockName;
-    }
-
-    public String getBlockCode() {
-        return BlockCode;
-    }
-
-    public void setKidDeviceID(UUID kidDeviceID) {
-        KidDeviceID = kidDeviceID;
+        return blockTimeBlock;
     }
 
     public void setBlockTimeBlock(LocalDate blockTimeBlock) {
-        BlockTimeBlock = blockTimeBlock;
+        this.blockTimeBlock = blockTimeBlock;
     }
 
-    public void setBlockTimeEdit(LocalDate blockTimeEdit) {
-        BlockTimeEdit = blockTimeEdit;
+    public String getParentID() {
+        return parentID;
     }
 
-    public void setParentID(UUID parentID) {
-        ParentID = parentID;
+    public void setParentID(String parentID) {
+        this.parentID = parentID;
+    }
+
+    public String getBlockName() {
+        return blockName;
     }
 
     public void setBlockName(String blockName) {
-        BlockName = blockName;
+        this.blockName = blockName;
+    }
+
+    public String getBlockCode() {
+        return blockCode;
     }
 
     public void setBlockCode(String blockCode) {
-        BlockCode = blockCode;
+        this.blockCode = blockCode;
     }
+
+    
     
 }

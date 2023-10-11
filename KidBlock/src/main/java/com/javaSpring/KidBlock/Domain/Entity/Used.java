@@ -8,6 +8,8 @@ import org.hibernate.annotations.UuidGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -15,9 +17,8 @@ public class Used extends BaseEntity {
 	@Column
 	@Id 
 	@UuidGenerator
-	private String usedID;
-	@Column
-	private String kidDeviceID;
+	private String usedId;
+
 	@Column
 	private LocalDate usedTimeStart;
 	@Column
@@ -26,18 +27,19 @@ public class Used extends BaseEntity {
 	private String usedCode;
 	@Column
 	private String usedName;
-	public String getUsedID() {
-		return usedID;
+
+	@ManyToOne()
+	@JoinColumn(name = "kid_device_id")
+	private KidDevice kidDevice;
+	
+
+	public String getUsedId() {
+		return usedId;
 	}
-	public void setUsedID(String usedID) {
-		this.usedID = usedID;
+	public void setUsedId(String usedId) {
+		this.usedId = usedId;
 	}
-	public String getKidDeviceID() {
-		return kidDeviceID;
-	}
-	public void setKidDeviceID(String kidDeviceID) {
-		this.kidDeviceID = kidDeviceID;
-	}
+	
 	public LocalDate getUsedTimeStart() {
 		return usedTimeStart;
 	}
@@ -61,6 +63,12 @@ public class Used extends BaseEntity {
 	}
 	public void setUsedName(String usedName) {
 		this.usedName = usedName;
+	}
+	public KidDevice getKidDevice() {
+		return kidDevice;
+	}
+	public void setKidDevice(KidDevice kidDevice) {
+		this.kidDevice = kidDevice;
 	}
 	
 }

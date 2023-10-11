@@ -7,7 +7,7 @@ public class ParentUpdateDTO {
     private String newParentPassword;
     private String newParentName;
     private String newParentAvatar;
-    private int parentPIN;
+    private int parentPin;
 
     public String getParentEmail() {
         return parentEmail;
@@ -49,12 +49,12 @@ public class ParentUpdateDTO {
         this.newParentAvatar = newParentAvatar;
     }
 
-    public int getParentPIN() {
-        return parentPIN;
+    public int getParentPin() {
+        return parentPin;
     }
 
-    public void setParentPIN(int parentPIN) {
-        this.parentPIN = parentPIN;
+    public void setParentPin(int parentPin) {
+        this.parentPin = parentPin;
     }
 }
 

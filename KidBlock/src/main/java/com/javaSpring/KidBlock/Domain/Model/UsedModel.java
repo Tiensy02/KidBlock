@@ -1,24 +1,24 @@
-package com.javaSpring.KidBlock.Applications.DTO;
+package com.javaSpring.KidBlock.Domain.Model;
 
 import java.time.LocalDate;
 
 
-public class UsedInsertDTO {
-    
-	private String kidDeviceID;
-	
+public class UsedModel {
+    private String usedId;
+
 	private LocalDate usedTimeStart;
+	private LocalDate usedTimeEnd;
 	
-    private String usedCode;
+	private String usedCode;
 	
 	private String usedName;
 
-    public String getKidDeviceID() {
-        return kidDeviceID;
+    public String getUsedId() {
+        return usedId;
     }
 
-    public void setKidDeviceID(String kidDeviceID) {
-        this.kidDeviceID = kidDeviceID;
+    public void setUsedId(String usedId) {
+        this.usedId = usedId;
     }
 
     public LocalDate getUsedTimeStart() {
@@ -27,6 +27,14 @@ public class UsedInsertDTO {
 
     public void setUsedTimeStart(LocalDate usedTimeStart) {
         this.usedTimeStart = usedTimeStart;
+    }
+
+    public LocalDate getUsedTimeEnd() {
+        return usedTimeEnd;
+    }
+
+    public void setUsedTimeEnd(LocalDate usedTimeEnd) {
+        this.usedTimeEnd = usedTimeEnd;
     }
 
     public String getUsedCode() {
@@ -44,7 +52,6 @@ public class UsedInsertDTO {
     public void setUsedName(String usedName) {
         this.usedName = usedName;
     }
+    
 
-    
-    
 }

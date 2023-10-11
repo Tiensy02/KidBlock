@@ -8,36 +8,39 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class Block  extends BaseEntity {
 	@Column
 	@Id
 	@UuidGenerator
-	private String blockID;
-	@Column
-	private String kidDeviceID;
+	private String blockId;
+
 	@Column
 	private LocalDate  blockTimeBlock;
 	@Column
 	private LocalDate blockTimeEdit;
 	@Column
-	private String parentID;
-	@Column
 	private String blockName;
 	@Column
 	private String blockCode;
-	public String getBlockID() {
-		return blockID;
+
+	@ManyToOne
+	@JoinColumn(name = "parent_Id")
+	private AccountParent accountParent;
+
+	@ManyToOne
+	@JoinColumn(name = "kid_device_id")
+	private KidDevice kidDevice;
+
+	public String getBlockId() {
+		return blockId;
 	}
-	public void setBlockID(String blockID) {
-		this.blockID = blockID;
+	public void setBlockId(String blockId) {
+		this.blockId = blockId;
 	}
-	public String getKidDeviceID() {
-		return kidDeviceID;
-	}
-	public void setKidDeviceID(String kidDeviceID) {
-		this.kidDeviceID = kidDeviceID;
-	}
+
 	public LocalDate getBlockTimeBlock() {
 		return blockTimeBlock;
 	}
@@ -50,12 +53,7 @@ public class Block  extends BaseEntity {
 	public void setBlockTimeEdit(LocalDate blockTimeEdit) {
 		this.blockTimeEdit = blockTimeEdit;
 	}
-	public String getParentID() {
-		return parentID;
-	}
-	public void setParentID(String parentID) {
-		this.parentID = parentID;
-	}
+	
 	public String getBlockName() {
 		return blockName;
 	}
@@ -67,6 +65,18 @@ public class Block  extends BaseEntity {
 	}
 	public void setBlockCode(String blockCode) {
 		this.blockCode = blockCode;
+	}
+	public AccountParent getAccountParent() {
+		return accountParent;
+	}
+	public void setAccountParent(AccountParent accountParent) {
+		this.accountParent = accountParent;
+	}
+	public KidDevice getKidDevice() {
+		return kidDevice;
+	}
+	public void setKidDevice(KidDevice kidDevice) {
+		this.kidDevice= kidDevice;
 	}
 	
 	

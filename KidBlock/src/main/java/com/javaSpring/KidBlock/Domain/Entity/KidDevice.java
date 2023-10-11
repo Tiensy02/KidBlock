@@ -1,21 +1,28 @@
 package com.javaSpring.KidBlock.Domain.Entity;
 
+import java.util.List;
+
 import org.hibernate.annotations.UuidGenerator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.javaSpring.KidBlock.Domain.Enum.KidAction;
 import com.javaSpring.KidBlock.Domain.Enum.KidMode;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 public class KidDevice extends BaseEntity {
 	@Column
 	@Id
 	@UuidGenerator
-	private String kidDeviceID;
+	private String kidDeviceId; 
 	@Column
 	private String kidDeviceName;
 	@Column
@@ -28,15 +35,22 @@ public class KidDevice extends BaseEntity {
 	private KidAction kidDeviceAction;
 	@Column
 	private int kidDeviceCode;
-	@Column
-	private String parentID;
 
+	@ManyToOne
+	@JoinColumn(name = "parent_Id")
+	private AccountParent accountParent;
 
-	public String getKidDeviceID() {
-		return kidDeviceID;
+	@OneToMany(mappedBy = "kidDevice", cascade  = CascadeType.ALL)
+	private List<Block> blocks;
+
+	@OneToMany(mappedBy = "kidDevice" , cascade =   CascadeType.ALL)
+	private List<Used> useds;
+
+	public String getKidDeviceId() {
+		return kidDeviceId;
 	}
-	public void setKidDeviceID(String kidDeviceID) {
-		this.kidDeviceID = kidDeviceID;
+	public void setKidDeviceId(String kidDeviceId) {
+		this.kidDeviceId = kidDeviceId;
 	}
 	public String getKidDeviceName() {
 		return kidDeviceName;
@@ -74,12 +88,24 @@ public class KidDevice extends BaseEntity {
 	public void setKidDeviceCode(int kidDeviceCode) {
 		this.kidDeviceCode = kidDeviceCode;
 	}
-	public String getParentID() {
-		return parentID;
+
+	public AccountParent getAccountParent() {
+		return accountParent;
 	}
-	public void setParentID(String parentID) {
-		this.parentID = parentID;
+	public void setAccountParent(AccountParent accountParent) {
+		this.accountParent = accountParent;
 	}
-	
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+	public List<Used> getUseds() {
+		return useds;
+	}
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+	public void setUseds(List<Used> useds) {
+		this.useds = useds;
+	}
 	
 }

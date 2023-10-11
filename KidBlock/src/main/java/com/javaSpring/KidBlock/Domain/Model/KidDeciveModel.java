@@ -1,22 +1,36 @@
 package com.javaSpring.KidBlock.Domain.Model;
 
+
 import com.javaSpring.KidBlock.Domain.Enum.KidAction;
 import com.javaSpring.KidBlock.Domain.Enum.KidMode;
 
+
 public class KidDeciveModel {
-    private String kidDeviceID;
+    private String kidDeviceId;
     private String kidDeviceName;
     private int kidDeviceKidAge;
     private String kidDeviceKidAvatar;
 	private KidAction kidDeviceAction;
     private KidMode kidDeviceParentMode;
-
+    
+    public KidDeciveModel(String kidDeviceId, String kidDeviceName, int kidDeviceKidAge, String kidDeviceKidAvatar,
+            KidAction kidDeviceAction, KidMode kidDeviceParentMode) {
+        this.kidDeviceId = kidDeviceId;
+        this.kidDeviceName = kidDeviceName;
+        this.kidDeviceKidAge = kidDeviceKidAge;
+        this.kidDeviceKidAvatar = kidDeviceKidAvatar;
+        this.kidDeviceAction = kidDeviceAction;
+        this.kidDeviceParentMode = kidDeviceParentMode;
+    }
+    public KidDeciveModel(){
+        
+    }
     public String getKidDeviceID() {
-        return kidDeviceID;
+        return kidDeviceId;
     }
 
-    public void setKidDeviceID(String kidDeviceID) {
-        this.kidDeviceID = kidDeviceID;
+    public void setKidDeviceID(String kidDeviceId) {
+        this.kidDeviceId = kidDeviceId;
     }
 
     public String getKidDeviceName() {

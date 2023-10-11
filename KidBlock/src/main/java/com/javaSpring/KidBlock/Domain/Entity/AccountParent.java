@@ -1,8 +1,11 @@
 package com.javaSpring.KidBlock.Domain.Entity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
+import java.util.List;
 
 import org.hibernate.annotations.UuidGenerator;
 
@@ -23,7 +26,18 @@ public class AccountParent extends BaseEntity {
 	@Column
 	private String parentAvatar;
 
-	
+	@OneToMany(mappedBy = "accountParent", cascade =  CascadeType.ALL)
+	private List<KidDevice> kidDevices ;
+
+	@OneToMany(mappedBy = "accountParent", cascade  = CascadeType.ALL)
+	private List<Block> blocks;
+
+	public void setKidDevices(List<KidDevice> kidDevices) {
+		this.kidDevices = kidDevices;
+	}
+	public List<KidDevice> getKidDevices() {
+		return kidDevices;
+	}
 	public String getParentID() {
 		return parentId;
 	}
@@ -36,10 +50,10 @@ public class AccountParent extends BaseEntity {
 	public void setParentPassword(String parentPassword) {
 		this.parentPassword = parentPassword;
 	}
-	public int getParentPassPIN() {
+	public int getParentPassPin() {
 		return parentPassPin;
 	}
-	public void setParentPassPIN(int parentPassPIN) {
+	public void setParentPassPin(int parentPassPIN) {
 		this.parentPassPin = parentPassPIN;
 	}
 	public String getParentEmail() {
