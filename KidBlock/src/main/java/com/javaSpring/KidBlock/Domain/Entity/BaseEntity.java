@@ -43,6 +43,7 @@ public class BaseEntity {
 	 @PrePersist
     public void onCreate() {
         createDate = LocalDate.now(); 
+		modifyDate = LocalDate.now();
     }
     
 

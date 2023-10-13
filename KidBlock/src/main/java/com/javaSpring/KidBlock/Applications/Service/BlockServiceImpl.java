@@ -16,6 +16,9 @@ import com.javaSpring.KidBlock.Domain.Exception.ConflictException;
 import com.javaSpring.KidBlock.Domain.Interface.IBlockRepository;
 import com.javaSpring.KidBlock.Domain.Model.BlockModel;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 
 @Service
 public class BlockServiceImpl implements BlockService {
@@ -25,7 +28,8 @@ public class BlockServiceImpl implements BlockService {
     IBlockRepository blockRepository;
     @Autowired
     BlockMapper blockMapper;
-
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<BlockModel> getBlockByKidDevice(String kidDeviceId) {
@@ -35,6 +39,7 @@ public class BlockServiceImpl implements BlockService {
        for( Block block : blocks ) {
         result.add(blockMapper.mapToBlockModelFromBlock(block));
        }
+       
        return result;
     }
 
@@ -58,7 +63,11 @@ public class BlockServiceImpl implements BlockService {
     @Override
     public void updateBlock(BlockUpdateDTO blockUpdateDTO) throws ConflictException {
         Block block = blockRepository.findByBlockId(blockUpdateDTO.getBlockId());
-        if(block.getAccountParent().getParentID() != blockUpdateDTO.getParentId() || block.getKidDevice().getKidDeviceId() != blockUpdateDTO.getKidDeviceId()) {
+        String str1 = blockUpdateDTO.getParentId();
+        String str2 = blockUpdateDTO.getKidDeviceId();
+        String str3 = block.getAccountParent().getParentID();
+        String str4 = block.getKidDevice().getKidDeviceId() ;
+        if( (!str3.equals(str1))  || (!str2.equals(str4)) ) {
             throw new ConflictException("Error",409);
         }else {
             blockRepository.save(blockMapper.mapToBlockFromBlockUpdate(block, blockUpdateDTO));
@@ -68,6 +77,11 @@ public class BlockServiceImpl implements BlockService {
     @Override
     public void deleteBlock(List<String> ids) {
         blockRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public void updateDateAllBlock() {
+       blockRepository.updateDateAllBlock();
     }
     
 

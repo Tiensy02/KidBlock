@@ -24,8 +24,8 @@ public class BlockMapper {
         blockModel.setKidDeviceKidAvatar(block.getKidDevice().getKidDeviceKidAvatar());
         blockModel.setKidDeviceName(block.getKidDevice().getKidDeviceName());
         LocalDate blockDate = block.getBlockTimeBlock();
-        LocalDate blockCreaDate = block.getCreateDate();
-        blockModel.setBlockTimeremain(0 - ChronoUnit.DAYS.between(blockDate,blockCreaDate));
+        LocalDate blockModifyDate = block.getModifyDate();
+        blockModel.setBlockTimeremain(0 - ChronoUnit.DAYS.between(blockDate,blockModifyDate));
 
         return blockModel;
     }
@@ -34,7 +34,15 @@ public class BlockMapper {
        Block block = new Block();
         block.setBlockName(dto.getBlockName());
         block.setBlockCode(dto.getBlockCode());
-        block.setBlockTimeBlock(dto.getBlockTimeBlock());
+        block.setBlockTimeEdit(dto.getBlockTimeEdit());
+
+        if(dto.getBlockTimeBlock() != null ) {
+            block.setBlockTimeBlock(dto.getBlockTimeBlock()); 
+        }else {
+            LocalDate day = LocalDate.now();
+            block.setBlockTimeBlock(day);
+        }
+
         if (dto.getKidDeviceID() != null) {
             KidDevice kidDevice = new KidDevice();
             kidDevice.setKidDeviceId(dto.getKidDeviceID());
@@ -45,6 +53,7 @@ public class BlockMapper {
             accountParent.setParentID(dto.getParentID());
             block.setAccountParent(accountParent);
         }
+
         return block;
     }
 
@@ -52,6 +61,7 @@ public class BlockMapper {
         if(blockUpdateDTO.getBlockTimeBlock() != null ) {
             block.setBlockTimeEdit(blockUpdateDTO.getBlockTimeBlock());
         }
+        if(blockUpdateDTO.getBlockTimeEdit() != null ) block.setBlockTimeEdit(blockUpdateDTO.getBlockTimeEdit());
         return block;
     }
 }

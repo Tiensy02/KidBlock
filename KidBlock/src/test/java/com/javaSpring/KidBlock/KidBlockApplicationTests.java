@@ -8,6 +8,7 @@ class KidBlockApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }

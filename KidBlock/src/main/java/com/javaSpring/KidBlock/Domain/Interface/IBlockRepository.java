@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
 import com.javaSpring.KidBlock.Domain.Entity.Block;
@@ -18,5 +19,7 @@ public interface IBlockRepository extends JpaRepository<Block,String> {
     Block findByAccountParentParentIdAndKidDeviceKidDeviceId(String parent_Id, String kid_device_id);
     Block findByBlockId(String blockId);
     List<Block> findByAccountParentParentId(String parent_Id);
+    @Procedure("Proc_Block_UpdateTimeEdit")
+    void updateDateAllBlock();
 
 }

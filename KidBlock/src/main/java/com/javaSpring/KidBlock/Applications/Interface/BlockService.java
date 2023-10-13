@@ -14,5 +14,6 @@ public interface BlockService {
     void insertBlock(BlockInsertDTO blockInsertDTO) throws ConflictException;
     void updateBlock(BlockUpdateDTO blockUpdateDTO) throws ConflictException;
     void deleteBlock(List<String> ids);
+    void updateDateAllBlock();
 
 }

@@ -14,6 +14,8 @@ public class BlockInsertDTO {
 	
 	private String blockCode;
 
+    private LocalDate blockTimeEdit;
+
     public String getKidDeviceID() {
         return kidDeviceID;
     }
@@ -52,6 +54,14 @@ public class BlockInsertDTO {
 
     public void setBlockCode(String blockCode) {
         this.blockCode = blockCode;
+    }
+
+    public LocalDate getBlockTimeEdit() {
+        return blockTimeEdit;
+    }
+
+    public void setBlockTimeEdit(LocalDate blockTimeEdit) {
+        this.blockTimeEdit = blockTimeEdit;
     }
 
     
